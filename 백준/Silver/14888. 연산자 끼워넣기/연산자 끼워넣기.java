@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 //연산자 끼워넣기
 public class Main {
-    static StringBuilder sb = new StringBuilder();
     static int N;
     static int max = Integer.MIN_VALUE;
     static int min = Integer.MAX_VALUE;
@@ -16,7 +15,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         number = new ArrayList<>();
-        sb = new StringBuilder();
         N = sc.nextInt();
         //더하기 빼기 나누기 곱하기 = 1 2 3 4
         candidates = new ArrayList<>();
@@ -29,20 +27,20 @@ public class Main {
             int C = sc.nextInt();
             if (C > 0) {
                 for(int j=0;j<C;j++){
-                switch (i) {
-                    case 0:
-                        candidates.add(1);
-                        break;
-                    case 1:
-                        candidates.add(2);
-                        break;
-                    case 2:
-                        candidates.add(3);
-                        break;
-                    case 3:
-                        candidates.add(4);
-                        break;
-                }
+                    switch (i) {
+                        case 0:
+                            candidates.add(1);
+                            break;
+                        case 1:
+                            candidates.add(2);
+                            break;
+                        case 2:
+                            candidates.add(3);
+                            break;
+                        case 3:
+                            candidates.add(4);
+                            break;
+                    }
                 }
             }
         }
@@ -54,7 +52,7 @@ public class Main {
 
     static void makeOrder(int depth) {
         if (depth == N) {
-                readyCalc();
+            readyCalc();
         } else {
             for (int i = 0; i < N-1; i++) {
                 if (!used[i]) {
@@ -68,12 +66,12 @@ public class Main {
     }
 
     private static void readyCalc() {
-            init=calc(number.get(0), opts[1], number.get(1));
-            for (int i=1;i<opts.length-1;i++) {
-                init=calc(init, opts[i+1], number.get(i+1));
-            }
-            max=Math.max(max,init);
-            min=Math.min(min,init);
+        init=calc(number.get(0), opts[1], number.get(1));
+        for (int i=1;i<opts.length-1;i++) {
+            init=calc(init, opts[i+1], number.get(i+1));
+        }
+        max=Math.max(max,init);
+        min=Math.min(min,init);
     }
 
     private static int calc(int n1, int op, int n2) {
